@@ -9,6 +9,7 @@ export default function Project(){
     useEffect( () =>{
         sanityClient.fetch(`*[_type == "project"]{
             title,
+            'image': image.asset->url,
             date,
             place,
             description,
@@ -21,13 +22,13 @@ export default function Project(){
     },[]);
     console.log(projectData)
     return(
-        <main className="bg-green-100 min-h-screen p-12">
+        <main className="bg-green-100 min-h-screen md:p-12 p-5">
             <section className="container mx-auto">
-                <h1 className="text 5xl flex justify-center cusrsive">My Projects</h1>
-                <h2 className="text-lg text-gray-600 flex justify-center mb-12">Welcome to My Projects Page</h2>
-                <section className="grid grid-cols-2 gap-8">
+                <h1 className="text-5xl font-bold text-green-900 flex justify-center cusrsive">My Projects</h1>
+                <section className="grid md:grid-cols-2 gap-8 md:p-20 pt-10">
                     {projectData && projectData.map( (project,index) => (
-                    <article className="relative rounded-lg shadow-xl bg-white p-16">
+                    <article key={index} className="relative rounded-lg shadow-xl bg-white md:p-16 p-5">
+                        
                         <h3 className="text-gray-800 text-3xl font-bold mb-2 hover:text-red-700">
                             <a 
                                 href={project.link}
@@ -36,6 +37,7 @@ export default function Project(){
                                 rel="noopener noreferrer"
                             >{project.title}</a>
                         </h3>
+                        <img src={project.image} alt={project.title} />
                         <div className="text-gray-500 text-xs space-x-4">
                             <span>
                                 <strong className="font-bold">Finished on</strong>: {" "}

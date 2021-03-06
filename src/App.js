@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from './components/Home.js';
-import About from './components/About.js';
+// import About from './components/About.js';
 import SinglePost from './components/SinglePost.js';
 import Post from './components/Post.js';
 import Project from './components/Project.js';
@@ -12,10 +12,10 @@ function App() {
     <NavBar />
       <Switch>
         <Route component={Home} exact path='/' /> 
-        <Route component={About} path='/about' />
+        {/* <Route component={About} path='/about' /> */}
         <Route component={SinglePost} path='/post/:slug' />
         <Route component={Post} path='/post' />
-        <Route component={Project} path='/porject' />
+        <Route component={Project} path='/projects' />
       </Switch>
     </BrowserRouter>
   );
